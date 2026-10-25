@@ -1,4 +1,4 @@
-![Localmark — Save social posts as local Markdown](docs/images/banner.png)
+![Localmark — Your saves. Your space.](docs/images/hero.svg)
 
 # Localmark
 
@@ -17,13 +17,20 @@
 
 ## 동작 방식
 
-![브라우저에서 Localmark 코어를 거쳐 Markdown Vault와 선택형 검색 도구로 연결되는 구조](docs/images/architecture.png)
+![X·Threads에서 저장하고 ego lite·Chrome으로 수집해 Markdown으로 보관. 선택적으로 QMD·MCP·AI 연결](docs/images/how-it-works.svg)
 
 Localmark는 선택한 브라우저의 로그인 세션을 이용해 화면에서 글을 읽고 Markdown과 원시 수집 배치를 저장합니다. 검색 인덱스와 답변 생성은 코어에서 분리되어 있습니다.
 
 ## 메뉴 바
 
+![Localmark 메뉴 바의 주요 기능을 간추린 UI 예시](docs/images/menubar.svg)
+
+<details>
+<summary>실제 메뉴 바 화면 보기</summary>
+
 ![Localmark 메뉴 바 설정 화면](docs/images/menubar.png)
+
+</details>
 
 계정 입력란에 아이디를 넣어 로그인하는 방식이 아닙니다. 첫 수집 성공 시 선택한 브라우저에서 계정을 자동 감지해 저장하며, 이후 계정이 바뀌면 수집하지 않고 `현재 계정으로 변경` 버튼을 표시합니다.
 
@@ -108,6 +115,8 @@ open "dist/Localmark.app"
 소스에서 직접 빌드하므로 Developer ID 인증서가 필요하지 않습니다. 메뉴 바의 `데이터 경로 → 위치 변경`에서 앞서 초기화한 Vault를 선택합니다.
 
 ## 생성되는 Vault
+
+![raw/ 수집 배치, posts/ Markdown, annotations/ 내 메모의 역할](docs/images/folders.svg)
 
 ```text
 Localmark/
