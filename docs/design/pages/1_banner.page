@@ -1,0 +1,75 @@
+pageType: cover
+background:
+  type: solid
+  color: "$dark"
+elements:
+  - elementId: eyebrow
+    elementType: text
+    bounds: [92, 108, 620, 26]
+    content:
+      fontFamily: Liter
+      fontSize: 17
+      letterSpacing: 4
+      color: "$accent"
+      wrap: false
+      text: LOCAL-FIRST · macOS · OPEN SOURCE
+  - elementId: wordmark
+    elementType: text
+    bounds: [88, 150, 760, 112]
+    content:
+      fontFamily: Liter
+      fontSize: 88
+      bold: true
+      color: "$lightText"
+      wrap: false
+      text: Localmark
+  - elementId: tagline
+    elementType: text
+    bounds: [92, 282, 780, 44]
+    content:
+      fontFamily: Liter
+      fontSize: 31
+      color: "#E5E5EA"
+      wrap: false
+      text: Save social posts as local Markdown.
+  - elementId: tagline-kr
+    elementType: text
+    bounds: [92, 344, 800, 32]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 20
+      color: "$dimText"
+      wrap: false
+      text: X·Threads에 저장한 글을, 내 컴퓨터의 Obsidian 호환 Markdown으로.
+  - elementId: rule
+    elementType: shape
+    bounds: [92, 424, 56, 3]
+    shapeName: rect
+    fill: {type: solid, color: "$accent"}
+  - elementId: features
+    elementType: text
+    bounds: [92, 452, 840, 30]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 18
+      color: "#8E8E93"
+      wrap: false
+      text: 북마크·좋아요·리포스트 수집  |  연글 전체 보존  |  QMD 로컬 검색(선택)
+  - elementId: bookmark
+    elementType: shape
+    bounds: [972, 138, 200, 360]
+    shapeName: custom
+    viewBox: [200, 360]
+    path: "M0,0 H200 V360 L100,272 L0,360 Z"
+    fill: {type: solid, color: "$accent"}
+  - elementId: bookmark-ext
+    elementType: text
+    bounds: [972, 208, 200, 90]
+    content:
+      fontFamily: Liter
+      fontSize: 62
+      bold: true
+      color: "#FFFFFF"
+      align: [center, middle]
+      wrap: false
+      text: .md

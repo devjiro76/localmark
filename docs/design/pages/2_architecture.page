@@ -1,0 +1,266 @@
+pageType: content
+background:
+  type: solid
+  color: "$paper"
+elements:
+  - elementId: title
+    elementType: text
+    bounds: [60, 40, 900, 40]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 28
+      bold: true
+      color: "$ink"
+      wrap: false
+      text: 수집에서 Markdown까지, 그리고 선택형 검색
+  - elementId: subtitle
+    elementType: text
+    bounds: [60, 88, 1000, 26]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 16
+      color: "$muted"
+      wrap: false
+      text: 실선은 기본 수집 경로, 점선은 선택 연동과 제어 흐름입니다.
+  - elementId: node-source
+    elementType: shape
+    bounds: [60, 190, 250, 130]
+    shapeName: rect
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: solid, width: 1.5, color: "#D2D2D7"}
+  - elementId: node-source-title
+    elementType: text
+    bounds: [80, 210, 210, 30]
+    content:
+      fontFamily: Liter
+      fontSize: 22
+      bold: true
+      color: "$ink"
+      wrap: false
+      text: X · Threads
+  - elementId: node-source-body
+    elementType: text
+    bounds: [80, 252, 212, 52]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 15
+      lineHeight: 1.4
+      color: "$muted"
+      text: |
+        북마크·좋아요·저장·리포스트
+        플랫폼별로 선택
+  - elementId: arrow-1
+    elementType: line
+    bounds: [316, 252, 56, 6]
+    viewBox: [56, 6]
+    points: "0,3 56,3"
+    arrow: [null, stealth]
+    border: {style: solid, width: 2, color: "$accent"}
+  - elementId: node-browser
+    elementType: shape
+    bounds: [378, 190, 250, 130]
+    shapeName: rect
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: solid, width: 1.5, color: "#D2D2D7"}
+  - elementId: node-browser-title
+    elementType: text
+    bounds: [398, 210, 210, 30]
+    content:
+      fontFamily: Liter
+      fontSize: 22
+      bold: true
+      color: "$ink"
+      wrap: false
+      text: ego lite
+  - elementId: node-browser-body
+    elementType: text
+    bounds: [398, 252, 212, 52]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 15
+      lineHeight: 1.4
+      color: "$muted"
+      text: |
+        기존 로그인 세션으로
+        화면을 읽어 수집
+  - elementId: arrow-2
+    elementType: line
+    bounds: [634, 252, 56, 6]
+    viewBox: [56, 6]
+    points: "0,3 56,3"
+    arrow: [null, stealth]
+    border: {style: solid, width: 2, color: "$accent"}
+  - elementId: node-core
+    elementType: shape
+    bounds: [696, 190, 250, 130]
+    shapeName: rect
+    fill: {type: solid, color: "#EAF3FF"}
+    border: {style: solid, width: 1.5, color: "$accent"}
+  - elementId: node-core-title
+    elementType: text
+    bounds: [716, 210, 210, 30]
+    content:
+      fontFamily: Liter
+      fontSize: 22
+      bold: true
+      color: "$ink"
+      wrap: false
+      text: Localmark 코어
+  - elementId: node-core-body
+    elementType: text
+    bounds: [716, 252, 212, 52]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 15
+      lineHeight: 1.4
+      color: "$muted"
+      text: |
+        중복 제거·연글 전체 조립
+        원시 배치 보존
+  - elementId: arrow-3
+    elementType: line
+    bounds: [952, 252, 56, 6]
+    viewBox: [56, 6]
+    points: "0,3 56,3"
+    arrow: [null, stealth]
+    border: {style: solid, width: 2, color: "$accent"}
+  - elementId: node-vault
+    elementType: shape
+    bounds: [1014, 190, 250, 130]
+    shapeName: rect
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: solid, width: 1.5, color: "#D2D2D7"}
+  - elementId: node-vault-title
+    elementType: text
+    bounds: [1034, 210, 210, 30]
+    content:
+      fontFamily: Liter
+      fontSize: 22
+      bold: true
+      color: "$ink"
+      wrap: false
+      text: Markdown Vault
+  - elementId: node-vault-body
+    elementType: text
+    bounds: [1034, 252, 212, 52]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 15
+      lineHeight: 1.4
+      color: "$muted"
+      text: |
+        Obsidian 호환
+        원문+출처 메타데이터
+  - elementId: arrow-qmd
+    elementType: line
+    bounds: [926, 320, 168, 108]
+    viewBox: [168, 108]
+    points: "163,0 163,52 5,52 5,108"
+    curve: sharp
+    arrow: [null, stealth]
+    border: {style: dash, width: 1.5, color: "$muted"}
+  - elementId: arrow-obsidian
+    elementType: line
+    bounds: [1184, 320, 10, 108]
+    viewBox: [10, 108]
+    points: "5,0 5,108"
+    arrow: [null, stealth]
+    border: {style: dash, width: 1.5, color: "$muted"}
+  - elementId: node-qmd
+    elementType: shape
+    bounds: [806, 428, 250, 120]
+    shapeName: rect
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: dash, width: 1.5, color: "#AEAEB2"}
+  - elementId: node-qmd-title
+    elementType: text
+    bounds: [826, 446, 210, 28]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 20
+      bold: true
+      color: "$ink"
+      wrap: false
+      text: QMD (선택)
+  - elementId: node-qmd-body
+    elementType: text
+    bounds: [826, 484, 212, 48]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 15
+      lineHeight: 1.4
+      color: "$muted"
+      text: |
+        로컬 키워드·의미 검색
+        MCP 제공
+  - elementId: node-obsidian
+    elementType: shape
+    bounds: [1014, 428, 250, 120]
+    shapeName: rect
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: dash, width: 1.5, color: "#AEAEB2"}
+  - elementId: node-obsidian-title
+    elementType: text
+    bounds: [1034, 446, 210, 28]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 20
+      bold: true
+      color: "$ink"
+      wrap: false
+      text: Obsidian · 내 AI/RAG
+  - elementId: node-obsidian-body
+    elementType: text
+    bounds: [1034, 484, 212, 48]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 15
+      lineHeight: 1.4
+      color: "$muted"
+      text: |
+        같은 Markdown을
+        그대로 읽어감
+  - elementId: arrow-menubar
+    elementType: line
+    bounds: [616, 320, 210, 108]
+    viewBox: [210, 108]
+    points: "5,108 5,54 205,54 205,0"
+    curve: sharp
+    arrow: [null, stealth]
+    border: {style: dash, width: 1.5, color: "$muted"}
+  - elementId: node-menubar
+    elementType: shape
+    bounds: [496, 428, 250, 120]
+    shapeName: rect
+    fill: {type: solid, color: "#FFFFFF"}
+    border: {style: dash, width: 1.5, color: "#AEAEB2"}
+  - elementId: node-menubar-title
+    elementType: text
+    bounds: [516, 446, 230, 28]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 20
+      bold: true
+      color: "$ink"
+      wrap: false
+      text: macOS 메뉴 바 · launchd
+  - elementId: node-menubar-body
+    elementType: text
+    bounds: [516, 484, 212, 48]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 15
+      lineHeight: 1.4
+      color: "$muted"
+      text: |
+        플랫폼별 ON/OFF·주기 설정
+        자동 실행
+  - elementId: footer
+    elementType: text
+    bounds: [60, 580, 1000, 24]
+    content:
+      fontFamily: Noto Sans KR
+      fontSize: 14
+      color: "$muted"
+      wrap: false
+      text: Localmark는 수집과 Markdown 저장까지만 담당하고, 검색·답변 생성은 연결한 도구가 맡습니다.

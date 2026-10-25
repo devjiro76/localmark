@@ -1,0 +1,8 @@
+node_modules/
+dist/
+menubar/.build/
+data/
+migration-target/
+reports/
+.tmp/
+.DS_Store

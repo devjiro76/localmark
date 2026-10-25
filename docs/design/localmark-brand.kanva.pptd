@@ -1,0 +1,20 @@
+version: v2
+title: Localmark README assets
+size: [1280, 640]
+customFonts:
+  - family: Liter
+    src: "https://statics.kimi.ai/neo-design-static/p-font/Liter.ttf"
+  - family: Noto Sans KR
+    src: "https://fonts.googleapis.com/css2?family=Noto+Sans+KR"
+theme:
+  colors:
+    accent: "#0A84FF"
+    dark: "#17171A"
+    lightText: "#F5F5F7"
+    dimText: "#9A9AA3"
+    ink: "#1D1D1F"
+    muted: "#6E6E73"
+    paper: "#FAFAF8"
+pages:
+  - pages/1_banner.page
+  - pages/2_architecture.page
