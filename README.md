@@ -145,6 +145,13 @@ Localmark/
 
 [QMD](https://github.com/tobi/qmd)를 연결하면 로컬 Vault에서 키워드 검색, 벡터 의미 검색, 관련도 재정렬을 사용할 수 있습니다. QMD가 MCP를 제공하고, 답변 생성은 사용자가 연결한 AI가 담당합니다.
 
+AI가 Vault를 제대로 검색하려면 **MCP와 스킬을 함께** 등록합니다. 둘 다 Vault 파일을 옮기거나 외부로 보내지 않습니다.
+
+| 구성 | 역할 | 없을 때 |
+| --- | --- | --- |
+| MCP (`qmd mcp`) | AI가 호출하는 검색 도구(`query`, `get`, `multi_get`) | AI가 `posts/**/*.md`를 직접 읽어야 하며, 표현이 다른 글을 찾는 의미 검색은 사용할 수 없음 |
+| 스킬 (`SKILL.md`) | 검색 순서, 원문 확인, 출처 표기, 읽기 전용 규칙 | 스니펫만 보고 답하거나 잘린 글을 전체 원문처럼 인용할 수 있음 |
+
 ### 1. 설치와 인덱싱
 
 Node.js 22와 Homebrew SQLite가 필요합니다.
@@ -206,9 +213,24 @@ corepack yarn --silent cli rag \
 
 출력된 `localmark` 서버를 MCP 클라이언트에 등록하면 AI가 `query`로 검색하고 `get`, `multi_get`으로 원문을 확인할 수 있습니다. 기본 `qmd` 대신 특정 실행 파일을 사용하려면 `LOCALMARK_QMD_BIN`을 지정합니다.
 
+Claude Code에서는 출력된 값으로 다음처럼 등록합니다. `--scope user`로 등록하면 모든 프로젝트에서 사용할 수 있습니다.
+
+```sh
+claude mcp add localmark --scope user \
+  -e QMD_CONFIG_DIR="$HOME/Documents/Localmark/.localmark/qmd/config" \
+  -e XDG_CACHE_HOME="$HOME/Documents/Localmark/.localmark/qmd/cache" \
+  -e QMD_EMBED_MODEL="hf:Qwen/Qwen3-Embedding-0.6B-GGUF/Qwen3-Embedding-0.6B-Q8_0.gguf" \
+  -- qmd mcp
+
+# 연결 확인: Status가 Connected이면 정상
+claude mcp get localmark
+```
+
+MCP 도구는 세션을 시작할 때 불러오므로, 등록 후 **새 세션**부터 사용할 수 있습니다.
+
 ### 4. 읽기 전용 스킬 등록
 
-`skills/localmark/SKILL.md`는 AI가 Vault를 읽기 전용으로 검색·인용하도록 안내하는 스킬입니다. 검색 후 원문 확인, 출처 표기, 부분 관측과 연글 메타데이터 해석 규칙을 포함합니다.
+`skills/localmark/SKILL.md`는 AI가 Vault를 읽기 전용으로 검색·인용하도록 안내하는 스킬입니다. 검색 후 원문 확인, 출처 표기, 부분 관측과 연글 메타데이터 해석 규칙을 포함합니다. 스킬은 3단계의 `localmark` MCP를 쓰는 것을 전제로 하며, MCP가 없으면 `posts/**/*.md`를 직접 읽는 방식으로 대체합니다.
 
 Claude 계열 에이전트에서는 다음처럼 복사할 수 있습니다.
 
