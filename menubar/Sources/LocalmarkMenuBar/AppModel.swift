@@ -70,17 +70,20 @@ final class AppModel: ObservableObject {
         guard let client, !running else { return }
         running = true; errorMessage = nil; notice = nil
         Task.detached {
-            do {
-                try client.runNow()
-                let snapshot = try client.loadStatus()
-                await MainActor.run {
+            let failure: String?
+            do { try client.runNow(); failure = nil } catch { failure = error.localizedDescription }
+            // A partial failure still saves per-platform results, so reload them either way.
+            let snapshot = try? client.loadStatus()
+            await MainActor.run {
+                if let snapshot {
                     self.state = snapshot.state; self.settings = snapshot.settings
                     self.capabilities = snapshot.capabilities
                     self.qmdStatus = snapshot.qmd
-                    self.running = false; self.notice = "수집을 마쳤습니다."
                 }
-            } catch {
-                await MainActor.run { self.errorMessage = error.localizedDescription; self.running = false }
+                self.running = false
+                guard let failure else { self.notice = "수집을 마쳤습니다."; return }
+                let platformFailed = snapshot?.state.platforms.values.contains { $0.lastError != nil } == true
+                self.errorMessage = platformFailed ? "일부 플랫폼 수집에 실패했습니다. 각 플랫폼 아래 메시지를 확인하세요." : failure
             }
         }
     }

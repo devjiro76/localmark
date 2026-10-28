@@ -74,7 +74,7 @@ final class CoreClient {
     }
 
     private func runCLI(_ arguments: [String]) throws -> ProcessResult {
-        try run(executable: nodeURL, arguments: ["--import", "tsx", rootURL.appendingPathComponent("src/cli.ts").path] + arguments + ["--data", dataURL.path])
+        try run(executable: nodeURL, arguments: ["--disable-warning=ExperimentalWarning", "--import", "tsx", rootURL.appendingPathComponent("src/cli.ts").path] + arguments + ["--data", dataURL.path])
     }
 
     private func run(executable: URL, arguments: [String]) throws -> ProcessResult {
@@ -93,9 +93,18 @@ final class CoreClient {
         process.waitUntilExit(); group.wait()
         let result = ProcessResult(status: process.terminationStatus, stdout: String(decoding: output, as: UTF8.self), stderr: String(decoding: errors, as: UTF8.self))
         if result.status != 0 {
-            let detail = result.stderr.trimmingCharacters(in: .whitespacesAndNewlines)
+            let detail = Self.readableError(result.stderr)
             throw CoreError.commandFailed(detail.isEmpty ? "명령이 실패했습니다." : detail)
         }
         return result
+    }
+
+    // stderr also carries QMD progress output and terminal control codes; keep only the readable tail.
+    private static func readableError(_ stderr: String) -> String {
+        let plain = stderr.replacingOccurrences(of: "\u{1B}\\[[0-9;?]*[A-Za-z]", with: "", options: .regularExpression)
+        let lines = plain.split(whereSeparator: \.isNewline)
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .filter { !$0.isEmpty }
+        return lines.suffix(5).joined(separator: "\n")
     }
 }
