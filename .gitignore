@@ -6,3 +6,4 @@ migration-target/
 reports/
 .tmp/
 .DS_Store
+.serena/
